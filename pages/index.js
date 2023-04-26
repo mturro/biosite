@@ -1,14 +1,20 @@
-import Head from 'next/head'
 import Header from "@components/Header";
-import ReactMarkdown from 'react-markdown'
-import Footer from '@components/Footer'
-import bio from './bio.md'
+import Link from 'next/link'
+import GitHubCalendar from 'react-github-calendar';
 
 export default function Home() {
   return (
-      <main>
-          <Header title="a tedious and possibly pretentious accounting of a person by that person for those who might care to read it." />
-          <ReactMarkdown>{bio}</ReactMarkdown>
-      </main>
+      <>
+      <Header title="(mturro:dotcom)" />
+          <GitHubCalendar username="mturro" />
+          <ul>
+              <li> <Link href={"https://github.com/mturro"}>github</Link></li>
+              <li> <a rel="me" href="https://shakedown.social/@mturro">mastodon</a></li>
+              <li> <Link href="/about">the story (approximately)</Link></li>
+              <li> <Link href="https:linkedin.com/in/mturro">the professional</Link></li>
+
+          </ul>
+      </>
+
   )
 }
