@@ -6,7 +6,11 @@ export default function Home() {
   return (
       <>
       <Header title="(mturro:dotcom)" />
-          <GitHubCalendar username="mturro" />
+          <GitHubCalendar
+              username="mturro"
+              hideColorLegend
+              blockSize={8}
+          />
           <ul>
               <li> <Link href={"https://github.com/mturro"}>github</Link></li>
               <li> <a rel="me" href="https://shakedown.social/@mturro">mastodon</a></li>
