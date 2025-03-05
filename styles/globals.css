@@ -103,7 +103,8 @@ main {
 h1,
 h2,
 h3 {
-  line-height: 1.1;
+  line-height: 1.9;
+  border-bottom: 1px solid var(--border);
 }
 
 /* Format navigation */
