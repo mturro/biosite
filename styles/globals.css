@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Set the global variables for everything. Change these to use your own fonts and colours. */
 :root {
   /* Set sans-serif & mono fonts */
@@ -71,21 +75,20 @@ body {
   overflow-x: hidden;
   word-break: break-word;
   overflow-wrap: break-word;
+  font-family: var(--sans-font);  /* This will be overridden by Merriweather */
 }
 
-/* Make the header bg full width, but the content inline with body */
+/* Remove the full-width header styles */
 header {
-  background: var(--accent-bg);
-  border-bottom: 1px solid var(--border);
-  text-align: center;
-  padding: 2rem 0.5rem;
-  width: 100vw;
-  position: relative;
-  box-sizing: border-box;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  background: white !important;
+  border-bottom: none;
+  width: auto;
+  position: static;
+  left: auto;
+  right: auto;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
 }
 
 /* Remove margins for header text */
@@ -123,6 +126,7 @@ nav a {
   padding: 0.1rem 1rem;
   text-decoration: none;
   transition: 0.4s;
+  font-family: var(--sans-font);  /* This will be overridden by Merriweather */
 }
 
 nav a:hover {
@@ -150,6 +154,8 @@ h1 {
           var(--header-scale) * var(--header-scale)
   );
   margin-top: calc(var(--line-height) * 1.5rem);
+  line-height: 1.2;
+  border-bottom: none;
 }
 
 h2 {

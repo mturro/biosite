@@ -1,4 +1,4 @@
-import '@styles/globals.css'
+import '../styles/globals.css'
 import { Lora, Merriweather, Playfair_Display } from 'next/font/google';
 
 export const lora = Lora({

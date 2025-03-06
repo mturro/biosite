@@ -1,0 +1,61 @@
+.nav {
+  position: relative;
+  display: inline-block;
+  margin-top: 0;
+}
+
+.button {
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: black;
+  transition: all 0.3s ease;
+}
+
+.hamburger.open span:first-child {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:last-child {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.menu {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background: white;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  min-width: 200px;
+  margin-top: 0.5rem;
+  z-index: 50;
+}
+
+.menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: black;
+}
+
+.menu a:hover {
+  background: #f5f5f5;
+} 
