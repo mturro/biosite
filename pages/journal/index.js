@@ -54,7 +54,7 @@ export default function Page({ posts, error }) {
 
   return (
     <main className={`max-w-4xl mx-auto px-4 py-8 ${merriweather.className}`}>
-      <Header title="(mturro:journal)" />
+      <Header title="every once in a while i will take approximately 15 minutes and journal some thoughts. these are the results." />
       
         {posts.map((post) => (
         <article key={post.id} className="space-y-6 list-none p-0">

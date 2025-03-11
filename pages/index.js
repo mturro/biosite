@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <Header title="(mturro:dotcom)" />
       <main className="px-4">
-        <div className="mb-8 mt-8">
+        <div className="calendar-wrapper">
           <GitHubCalendar
             username="mturro"
             hideColorLegend
@@ -17,9 +17,9 @@ export default function Home() {
         <ul>
           <li><Link href={"https://github.com/mturro"}>github</Link></li>
           <li><a rel="me" href="https://shakedown.social/@mturro">mastodon</a></li>
-          <li><Link href="/about">the story (approximately)</Link></li>
+          <li><Link href="/about">bio (approximately)</Link></li>
           <li><Link href="/journal">journal</Link></li>
-          <li><Link href="https:linkedin.com/in/mturro">the professional</Link></li>
+          <li><Link href="https://linkedin.com/in/mturro">the professional</Link></li>
         </ul>
       </main>
     </>

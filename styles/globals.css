@@ -88,7 +88,7 @@ header {
   right: auto;
   margin-left: 0;
   margin-right: 0;
-  padding: 0;
+  padding: 2rem 0 0 0;  /* Increased top padding */
 }
 
 /* Remove margins for header text */
@@ -515,4 +515,18 @@ pre code {
   background: none;
   margin: 0;
   padding: 0;
+}
+
+/* Override calendar footer styles */
+.js-calendar-graph-svg + footer,
+div[class*='react-activity-calendar'] footer {
+  margin-top: 1rem !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.calendar-wrapper footer {
+  margin-top: 1rem !important;
+  padding: 0 !important;
+  border: none !important;
 }
