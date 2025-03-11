@@ -17,6 +17,7 @@ export default function Home() {
         <ul>
           <li><Link href={"https://github.com/mturro"}>github</Link></li>
           <li><a rel="me" href="https://shakedown.social/@mturro">mastodon</a></li>
+          <li><a rel="me" href="https://bsky.app/profile/mturro.com">bluesky</a></li>
           <li><Link href="/about">bio (approximately)</Link></li>
           <li><Link href="/journal">journal</Link></li>
           <li><Link href="https://linkedin.com/in/mturro">the professional</Link></li>
