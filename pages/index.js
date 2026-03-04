@@ -12,6 +12,7 @@ export default function Home() {
             username="mturro"
             hideColorLegend
             blockSize={8}
+            colorScheme="light"
           />
         </div>
         <h3>here</h3>
