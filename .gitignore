@@ -32,3 +32,4 @@ yarn-error.log*
 # Local Netlify folder
 .netlify
 .claude/settings.local.json
+next_react_update_plan.md

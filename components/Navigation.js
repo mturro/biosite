@@ -1,7 +1,9 @@
+'use client'
+
 import { useState } from 'react'
 import Link from 'next/link'
 import styles from '../styles/Navigation.module.css'
-import { merriweather } from '../pages/_app'
+import { merriweather } from '@lib/fonts'
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
