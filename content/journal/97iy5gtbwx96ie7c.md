@@ -1,0 +1,7 @@
+---
+id: 97iy5gtbwx96ie7c
+slug: productivity-is-limited
+created: 2025-03-06T18:14:26Z
+---
+
+Productivity is limited. I suppose that in some sense, some very narrow sense where capital sees a return, we can push for productivity with harsh methods that extract some sort of measurable output from labor. Yet the economics of it is so cold. If capitalism, or the capitalistic approach to creation, has a true flaw it would be this unrelenting drive to numbers. Hours worked, lines of code, lead time, defect rate. The software we make, the technology we use, has suffered from this frame. In selecting productivity as capital sees it as the core metric by which we measure the value of any given output we provide the set and setting for the creation of ugly, sinister, inhumane technological systems that pervade our discourse and sideline our critical reasoning.  Perhaps if we opt for a humane perspective on productivity will we have some chance at creating technology that echo the oldest sense of tool-use as the extension of human capability.  Perhaps if we situate the whole person as something to be supported rather than something to be mined we can reclaim the development of technology from the blind drive of capital. 

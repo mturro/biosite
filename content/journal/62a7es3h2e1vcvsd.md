@@ -1,0 +1,7 @@
+---
+id: 62a7es3h2e1vcvsd
+slug: hey
+created: 2026-03-04T20:38:58Z
+---
+
+Hey. Been a while. Between now and then came a new year, a war, a tragedy, a threat, and likely bits and pieces of joy and delight. The winter has been cold, dark and filled with snow as winters do. So many times knee deep in snow over the last few weeks and months I've been thrown back in time, ten years, twenty years, thirty years, to other snow-filled winters. The climate was changing then as well. It is changing still. So many things are changing. The snow is just now starting to melt and the temperature is starting to rise to a level that doesn't feel so punishing.  So now it's March. Almost spring and almost ready to exhale. The groundhog didn't want to face the world and that is an animal wisdom that is hard to argue with. Yet there is still good food, laughter, and kids in ill-fitting clothes who have no past to compare with this cold, unfeeling present. There is a nonsensical power in the world now. It operates from a mythical past and is guided by fantasy. Pragmatic reality is now confined to the wilderness while mythologies run wild. The news is a stem and a cap and a psychedelic displacement that sorts its consumers by tribe, each confident in their path, each sure of their ceremony, each simply living for the hope of a better world.

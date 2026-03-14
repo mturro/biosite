@@ -1,0 +1,8 @@
+---
+id: h5r9jpf4ditw2ujs
+slug: the-wind-lately
+created: 2025-03-10T20:20:29Z
+---
+
+The wind lately. 
+It knows something is up. It knows we fell asleep and it knows that the artificially intelligent are running code against us. And for our part we are self-documenting. We're giving it up all day and letting it fly - language and thought and the simple exhaust of life here in this time are blown across the street like the neighbor's recycling. Empty cans and energy drinks. The leadership has braced itself against every decent thought the last half century has had and the violence in the wind is enough to make you think. How many times do I need to chase down a garbage can to know that the only thing it really wants is to roll away, spreading its forgotten garbage across a neighborhood that is desperately trying to make sense of the wind. It never used to be like this. There are no question marks on sentences because the answers are either unknowable or unnecessary. There is no questioning anymore. There is only resistance or acceptance. The days of just letting the wind blow are behind us. At some point the wind demands to be reckoned with and a choice will have to be made. There seems to be danger in every act. Spending time in the street among a drift of empty beer cans is kinetic and the simple act of stomping them into the ground so they can't roll away seems like the only thing of value left to do.

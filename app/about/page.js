@@ -10,7 +10,9 @@ export default function About() {
     <main>
       <Header title="a tedious and possibly pretentious accounting of a person by that person for those who might care to read it." />
       <AboutContent markdown={bio} />
-      <a rel="me" href="https://shakedown.social/@mturro">shakedown.social/@mturro</a>
+      <footer>
+        <a rel="me" href="https://shakedown.social/@mturro">shakedown.social/@mturro</a>
+      </footer>
     </main>
   )
 }

@@ -9,7 +9,7 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className={styles.nav}>
+    <nav className={styles.nav}>
       <button onClick={() => setIsOpen(!isOpen)} className={styles.button}>
         <span className={`${styles.hamburger} ${isOpen ? styles.open : ''}`}>
           <span></span>
@@ -25,6 +25,6 @@ export default function Navigation() {
           <Link href="/about">about</Link>
         </div>
       )}
-    </div>
+    </nav>
   )
 } 
