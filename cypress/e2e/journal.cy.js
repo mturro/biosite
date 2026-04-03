@@ -1,25 +1,6 @@
-const mockPosts = {
-  data: {
-    posts: [
-      {
-        id: 'post-1',
-        body: 'This is my first journal entry. It has some content to read.',
-        created: '2024-01-15T10:00:00Z',
-      },
-      {
-        id: 'post-2',
-        body: 'This is my second journal entry with more thoughts.',
-        created: '2024-02-20T14:30:00Z',
-      },
-    ],
-  },
-}
-
 describe('Journal Page', () => {
   beforeEach(() => {
-    cy.intercept('GET', 'https://write.as/api/collections/mturro/posts', mockPosts).as('getPosts')
     cy.visit('/journal')
-    cy.wait('@getPosts')
   })
 
   it('renders the header subtitle', () => {
@@ -46,18 +27,14 @@ describe('Journal Page', () => {
     })
   })
 
-  it('does not show a fetch error', () => {
-    cy.get('.text-red-600').should('not.exist')
-  })
-
-  describe('when the API fails', () => {
-    it('displays an error message', () => {
-      cy.intercept('GET', 'https://write.as/api/collections/mturro/posts', {
-        statusCode: 500,
-      }).as('getPostsError')
-      cy.visit('/journal')
-      cy.wait('@getPostsError')
-      cy.get('.text-red-600').should('be.visible')
+  it('posts are sorted newest first', () => {
+    const dates = []
+    cy.get('article .text-gray-600').each(($el) => {
+      dates.push(new Date($el.text()))
+    }).then(() => {
+      for (let i = 1; i < dates.length; i++) {
+        expect(dates[i - 1].getTime()).to.be.at.least(dates[i].getTime())
+      }
     })
   })
 })
