@@ -1,90 +1,123 @@
-# Next + Netlify Starter
+# Biosite — mturro.com
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/46648482-644c-4c80-bafb-872057e51b6b/deploy-status)](https://app.netlify.com/sites/next-dev-starter/deploys)
 
-This is a [Next.js](https://nextjs.org/) v12 project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and set up to be instantly deployed to [Netlify](https://url.netlify.com/SyTBPVamO)!
+Personal website for [mturro.com](https://mturro.com), built with [Next.js](https://nextjs.org/) 16 (App Router), [React](https://react.dev/) 19, and [Tailwind CSS](https://tailwindcss.com/). Deployed on [Netlify](https://www.netlify.com/).
 
-This project is a very minimal starter that includes 2 sample components, a global stylesheet, a `netlify.toml` for deployment, and a `jsconfig.json` for setting up absolute imports and aliases. With Netlify, you'll have access to features like Preview Mode, server-side rendering/incremental static regeneration via Netlify Functions, and internationalized routing on deploy automatically.
+Originally bootstrapped from the [Next + Netlify Starter](https://github.com/netlify-templates/next-netlify-starter) template, the project has since been substantially rewritten — migrated from the Pages Router to the App Router, updated to Next.js 16 / React 19, and extended with custom content, typography, and a journal sync workflow.
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/next-netlify-starter&utm_source=github&utm_medium=nextstarter-cs&utm_campaign=devex-cs)
-
-(If you click this button, it will create a new repo for you that looks exactly like this one, and sets that repo up immediately for deployment on Netlify)
-
-## Table of Contents:
+## Table of Contents
 
 - [Getting Started](#getting-started)
-- [Installation options](#installation-options)
+- [Project Structure](#project-structure)
+- [Routes](#routes)
+- [Architecture](#architecture)
+- [Styling & Typography](#styling--typography)
+- [Journal Sync](#journal-sync)
 - [Testing](#testing)
-  - [Included Default Testing](#included-default-testing)
-  - [Removing Renovate](#removing-renovate)
-  - [Removing Cypress](#removing-cypress)
+- [Deployment](#deployment)
 
 ## Getting Started
 
-First, run the development server:
+**Prerequisites:** Node.js (see `.nvmrc` for the expected version — currently 25.x)
 
 ```bash
+# Install dependencies
+npm install
+
+# Start the dev server (Turbopack)
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Project Structure
 
-### Installation options
+```
+app/                  # Next.js App Router pages and layouts
+  layout.js           # Root layout (global styles, Merriweather body font)
+  page.js             # Home page — GitHub calendar, link hub
+  about/              # /about — bio page (reads content/bio.md)
+  journal/            # /journal — journal entries from local markdown
+components/           # Reusable UI components
+  Header.js           # Page header with optional Navigation
+  Navigation.js       # Client-side hamburger menu
+  Footer.js           # Site footer
+content/              # Markdown content
+  bio.md              # About page content
+  journal/            # Journal post markdown files (synced from write.as)
+lib/                  # Shared utilities
+  fonts.js            # Google Fonts config (Lora, Merriweather, Playfair Display)
+  journal.js          # Journal post reader with frontmatter parsing
+scripts/
+  sync-journal.mjs    # Fetches journal posts from write.as API
+styles/
+  globals.css         # Global styles, CSS variables, Tailwind directives
+  Navigation.module.css  # Navigation component styles
+public/               # Static assets (favicon, logos)
+netlify.toml          # Netlify build configuration
+tailwind.config.js    # Tailwind CSS configuration
+jsconfig.json         # Path aliases (@components, @styles, @lib)
+```
 
-**Option one:** One-click deploy
+## Routes
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/next-netlify-starter&utm_source=github&utm_medium=nextstarter-cs&utm_campaign=devex-cs)
+| Route | File | Description |
+|-------|------|-------------|
+| `/` | `app/page.js` | Home page — GitHub contribution calendar and links to internal pages and social profiles. Client component. |
+| `/about` | `app/about/page.js` | Bio page — reads `content/bio.md` at request time via Node `fs`. Server component. |
+| `/journal` | `app/journal/page.js` | Journal — displays posts from local markdown files in `content/journal/`. Server component. |
 
-**Option two:** Manual clone
+## Architecture
 
-1. Clone this repo: `git clone https://github.com/netlify-templates/next-netlify-starter.git`
-2. Navigate to the directory and run `npm install`
-3. Run `npm run dev`
-4. Make your changes
-5. Connect to [Netlify](https://url.netlify.com/Bk4UicocL) manually (the `netlify.toml` file is the one you'll need to make sure stays intact to make sure the export is done and pointed to the right stuff)
+- **App Router** — The site uses Next.js App Router exclusively (`app/` directory). There is no Pages Router.
+- **Server & client components** — Pages are server components by default. Components that need interactivity (`Navigation`, `AboutContent`, home page with `GitHubCalendar`) are marked with `'use client'`.
+- **Path aliases** — `@components/*`, `@styles/*`, `@lib/*` are configured in `jsconfig.json` for clean imports.
+- **Markdown rendering** — The about page reads `content/bio.md` from disk using Node `fs` in a server component, then passes it to an `AboutContent` client component that renders it with `react-markdown` and `remark-gfm`.
+- **Journal data** — Journal posts are read from local markdown files in `content/journal/` via `getPosts()` in `lib/journal.js`. Each file has YAML frontmatter (`id`, `slug`, `created`) followed by the post body. Posts are sorted by date, newest first.
+- **ESM note** — `next.config.js` and `tailwind.config.js` use CommonJS (`module.exports`). Scripts that need ESM syntax use the `.mjs` extension. There is no `"type": "module"` in `package.json`.
+
+## Styling & Typography
+
+The site uses **Tailwind CSS** alongside a detailed global stylesheet (`styles/globals.css`) that defines CSS custom properties for colors, spacing, and a typographic scale.
+
+**Fonts** (via `next/font/google`, defined in `lib/fonts.js`):
+
+| Font | Usage |
+|------|-------|
+| **Merriweather** | Body text (applied to `<body>` in root layout) |
+| **Playfair Display** | Page headings (`<h1>` in `Header` component) |
+| **Lora** | Journal entry date headings |
+
+**Design notes:**
+- Light mode only — no dark mode toggle or media query.
+- Header scale uses a 1.25x major-third progression for `h1`–`h6`.
+- Navigation uses a hamburger menu pattern (CSS Modules + React state) for a minimal, mobile-friendly UI.
+
+## Journal Sync
+
+Journal posts originate on [write.as](https://write.as) and are synced locally as markdown files.
+
+```bash
+# Fetch latest posts from write.as and write to content/journal/
+npm run sync-journal
+```
+
+The sync script (`scripts/sync-journal.mjs`) fetches from the [write.as API](https://write.as/api/collections/mturro/posts), generates markdown files with frontmatter, and writes them to `content/journal/<id>.md`. It is idempotent — existing files are overwritten, but removed posts are not deleted.
+
+**Workflow:** After publishing a new post on write.as, run `npm run sync-journal` locally, then commit and push the new markdown file(s). Netlify will deploy automatically.
 
 ## Testing
 
-### Included Default Testing
+The project includes [Cypress](https://www.cypress.io/) for end-to-end testing and [Renovate](https://www.mend.io/free-developer-tools/renovate/) for automated dependency updates.
 
-We’ve included some tooling that helps us maintain these templates. This template currently uses:
+Cypress tests are configured in `cypress.config.js` and live in the `cypress/` directory. They run against `http://localhost:3000`.
 
-- [Renovate](https://www.mend.io/free-developer-tools/renovate/) - to regularly update our dependencies
-- [Cypress](https://www.cypress.io/) - to run tests against how the template runs in the browser
-- [Cypress Netlify Build Plugin](https://github.com/cypress-io/netlify-plugin-cypress) - to run our tests during our build process
+## Deployment
 
-If your team is not interested in this tooling, you can remove them with ease!
+The site is deployed on **Netlify**. The build configuration lives in `netlify.toml`:
 
-### Removing Renovate
+- **Build command:** `npm run build`
+- **Publish directory:** `.next`
 
-In order to keep our project up-to-date with dependencies we use a tool called [Renovate](https://github.com/marketplace/renovate). If you’re not interested in this tooling, delete the `renovate.json` file and commit that onto your main branch.
-
-### Removing Cypress
-
-For our testing, we use [Cypress](https://www.cypress.io/) for end-to-end testing. This makes sure that we can validate that our templates are rendering and displaying as we’d expect. By default, we have Cypress not generate deploy links if our tests don’t pass. If you’d like to keep Cypress and still generate the deploy links, go into your `netlify.toml` and delete the plugin configuration lines:
-
-```diff
-[[plugins]]
-  package = "netlify-plugin-cypress"
--  [plugins.inputs.postBuild]
--    enable = true
--
--  [plugins.inputs]
--    enable = false 
-```
-
-If you’d like to remove the `netlify-plugin-cypress` build plugin entirely, you’d need to delete the entire block above instead. And then make sure sure to remove the package from the dependencies using:
-
-```bash
-npm uninstall -D netlify-plugin-cypress
-```
-
-And lastly if you’d like to remove Cypress entirely, delete the entire `cypress` folder and the `cypress.config.ts` file. Then remove the dependency using:
-
-```bash
-npm uninstall -S cypress
-```
+Deploys are triggered automatically by pushes to `main`.
