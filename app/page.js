@@ -24,6 +24,7 @@ export default function Home() {
         </ul>
         <h3>elsewhere</h3>
         <ul>
+          <li><a href="https://gitpoem.mturro.com">gitpoem</a></li>
           <li><Link href="https://github.com/mturro">github</Link></li>
           <li><a rel="me" href="https://shakedown.social/@mturro">mastodon</a></li>
           <li><a rel="me" href="https://bsky.app/profile/mturro.com">bluesky</a></li>
