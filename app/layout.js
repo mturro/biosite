@@ -1,5 +1,5 @@
 import '@styles/globals.css'
-import { merriweather } from '@lib/fonts'
+import { fraunces, inter, jetbrainsMono } from '@lib/fonts'
 
 export const metadata = {
   title: '(mturro:dotcom)',
@@ -7,10 +7,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={merriweather.className}>
-        {children}
-      </body>
+    <html lang="en" className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
+      <body>{children}</body>
     </html>
   )
 }

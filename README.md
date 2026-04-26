@@ -35,7 +35,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 
 ```
 app/                  # Next.js App Router pages and layouts
-  layout.js           # Root layout (global styles, Merriweather body font)
+  layout.js           # Root layout (global styles, font CSS variables)
   page.js             # Home page — GitHub calendar, link hub
   about/              # /about — bio page (reads content/bio.md)
   journal/            # /journal — journal entries from local markdown
@@ -47,7 +47,7 @@ content/              # Markdown content
   bio.md              # About page content
   journal/            # Journal post markdown files (synced from write.as)
 lib/                  # Shared utilities
-  fonts.js            # Google Fonts config (Lora, Merriweather, Playfair Display)
+  fonts.js            # Google Fonts config (Fraunces, Inter, JetBrains Mono)
   journal.js          # Journal post reader with frontmatter parsing
 scripts/
   sync-journal.mjs    # Fetches journal posts from write.as API
@@ -85,9 +85,11 @@ The site uses **Tailwind CSS** alongside a detailed global stylesheet (`styles/g
 
 | Font | Usage |
 |------|-------|
-| **Merriweather** | Body text (applied to `<body>` in root layout) |
-| **Playfair Display** | Page headings (`<h1>` in `Header` component) |
-| **Lora** | Journal entry date headings |
+| **Inter** | Body text and UI (applied via `--font-sans` CSS variable) |
+| **Fraunces** | Page title, headings, journal dates (applied via `--font-display`) |
+| **JetBrains Mono** | Code (applied via `--font-mono`) |
+
+The three fonts are loaded as CSS variables on `<html>` in the root layout and consumed in `styles/globals.css`. Components do not import font objects directly.
 
 **Design notes:**
 - Light mode only — no dark mode toggle or media query.

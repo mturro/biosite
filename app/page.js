@@ -2,14 +2,30 @@
 
 import Header from '@components/Header'
 import Link from 'next/link'
+import { useEffect, useRef } from 'react'
 import GitHubCalendar from 'react-github-calendar'
 
 export default function Home() {
+  const calendarRef = useRef(null)
+
+  useEffect(() => {
+    const root = calendarRef.current
+    if (!root) return
+    const scrollToEnd = () => {
+      const scroller = root.querySelector('.react-activity-calendar__scroll-container')
+      if (scroller) scroller.scrollLeft = scroller.scrollWidth
+    }
+    scrollToEnd()
+    const observer = new MutationObserver(scrollToEnd)
+    observer.observe(root, { childList: true, subtree: true })
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <>
       <Header title="(mturro:dotcom)" showNavigation={false} />
       <main className="px-4">
-        <div className="calendar-wrapper">
+        <div ref={calendarRef} className="calendar-wrapper">
           <GitHubCalendar
             username="mturro"
             hideColorLegend

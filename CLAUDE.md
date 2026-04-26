@@ -11,7 +11,7 @@ Personal website built with Next.js 16 (App Router), React 19, and Tailwind CSS.
 ## Architecture
 
 - **App Router** (`app/`) — No Pages Router. Uses server components by default.
-- **Fonts** — Defined in `lib/fonts.js` (Lora, Merriweather, Playfair_Display via `next/font/google`). Import from `@lib/fonts`.
+- **Fonts** — Defined in `lib/fonts.js` (Fraunces display, Inter sans, JetBrains Mono via `next/font/google`). The three font objects are applied as CSS variables on `<html>` in `app/layout.js` and consumed in `styles/globals.css` via `--font-sans`, `--font-display`, `--font-mono`. Use the CSS vars in stylesheets — don't import font objects into individual components.
 - **Path aliases** — `@components/*`, `@styles/*`, `@lib/*` (configured in `jsconfig.json`)
 - **Styling** — Tailwind CSS + CSS Modules + custom CSS variables in `styles/globals.css`
 - **Markdown** — `content/bio.md` read via Node `fs` in server component (no build-time loader)
