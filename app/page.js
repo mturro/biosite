@@ -1,10 +1,25 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Header from '@components/Header'
 import Link from 'next/link'
 import GitHubCalendar from 'react-github-calendar'
 
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const mql = window.matchMedia(`(max-width: ${breakpoint}px)`)
+    setIsMobile(mql.matches)
+    const handler = (e) => setIsMobile(e.matches)
+    mql.addEventListener('change', handler)
+    return () => mql.removeEventListener('change', handler)
+  }, [breakpoint])
+  return isMobile
+}
+
 export default function Home() {
+  const isMobile = useIsMobile()
+
   return (
     <>
       <Header title="(mturro:dotcom)" showNavigation={false} />
@@ -13,7 +28,8 @@ export default function Home() {
           <GitHubCalendar
             username="mturro"
             hideColorLegend
-            blockSize={8}
+            blockSize={isMobile ? 4 : 8}
+            blockMargin={isMobile ? 2 : 4}
             colorScheme="light"
           />
         </div>

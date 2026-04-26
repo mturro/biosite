@@ -505,10 +505,6 @@ div[class*='react-activity-calendar'] footer {
   border: none !important;
 }
 
-.calendar-wrapper {
-  overflow-x: auto;
-}
-
 .calendar-wrapper footer {
   margin-top: 1rem !important;
   padding: 0 !important;
