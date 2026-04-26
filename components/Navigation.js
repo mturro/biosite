@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import styles from '../styles/Navigation.module.css'
-import { merriweather } from '@lib/fonts'
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -19,7 +18,7 @@ export default function Navigation() {
       </button>
 
       {isOpen && (
-        <div className={`${styles.menu} ${merriweather.className}`}>
+        <div className={styles.menu}>
           <Link href="/">home</Link>
           <Link href="/journal">journal</Link>
           <Link href="/about">about</Link>
